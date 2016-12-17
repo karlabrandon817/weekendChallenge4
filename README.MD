@@ -3,6 +3,15 @@ Weekend Challenge 4: The To Do List
 
 The purpose of this assignment is to demonstrate the ability to navigate the full stack. The goal for this challenge is to create a 'TO DO' application.
 
+Technologies
+============
+* JQuery
+* Node
+* Express
+* SQL
+* HTML
+* CSS 
+
 Challenge Components
 --------------------
 [] Create a front end experience that allows users to create a task.<br>
