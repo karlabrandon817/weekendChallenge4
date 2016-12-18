@@ -8,13 +8,20 @@
         url: '/retrieveTasks',
         success: function(response){
           console.log('back from get call:', response);
-          // $('#toDoItems').html='';//clear div
+          $('#toDoItems').html='';//clear div
           var outputText = '';
           for (var i = 0; i < response.length; i++) {
             taskArray.push = (response[i]);
-            outputText = '<p class="stuff">' + response[i].task + ' ' + '<button class="completedTaskButton" data="' + response[i].id + '">Task Complete</button>' + ' ' + '<button class="deleteTaskButton" data="' + response[i].id + '">Delete Item</button>';
+            //outputText += '<p class="stuff">' + response[i].task + ' ' + '<button class="completedTaskButton" data="' + response[i].id + '">Task Complete</button>' + ' ' + '<button class="deleteTaskButton" data="' + response[i].id + '">Delete Item</button>';
+            if(response[i].completed === true){
+              outputText += '<p class="completed">' + response[i].task + ' ' + '<button class="deleteTaskButton" data="' + response[i].id + '">Delete Item</button>';
+              //$(this).parent().toggleClass('completed');
+              $(this).hide();
+            } else {
+              outputText += '<p class="stuff">' + response[i].task + ' ' + '<button class="completedTaskButton" data="' + response[i].id + '">Task Complete</button>' + ' ' + '<button class="deleteTaskButton" data="' + response[i].id + '">Delete Item</button>';
+            }
           }//end for loop
-          $('#toDoItems').append(outputText);
+          $('#toDoItems').html(outputText);
         }
       });//end getTasks ajax
     };//end getTasks
@@ -52,8 +59,7 @@
       var status = $(this).attr('data');
       if (status === false){
         status = 'true';
-      }
-      console.log(status);
+      }//change status to completed
       var objectToSend = {
       id: $(this).attr('data')
     };
@@ -64,7 +70,7 @@
         success:function(response){
       console.log(response, 'yo');
       }
-    });
+    });//end ajax
     });//end completedTaskButton
 
     $('#toDoItems').on('click', '.deleteTaskButton',function(){
