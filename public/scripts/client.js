@@ -12,7 +12,7 @@ var taskArray = [];
         var outputText = '';
         for (var i = 0; i < response.length; i++) {
           taskArray.push = (response[i]);
-          outputText += '<p>' + response[i].task + ' ' + '<button class="completedTaskButton" data="' + response[i].id + '">Task Complete</button>' + ' ' + '<button class="deleteTaskButton">Delete Item</button>';
+          outputText += '<p class="stuff">' + response[i].task + ' ' + '<button class="completedTaskButton" data="' + response[i].id + '">Task Complete</button>' + ' ' + '<button class="deleteTaskButton data="' + response[i].id + '"">Delete Item</button>';
 
         }//end for loop
         $('#toDoItems').html(outputText);
@@ -50,8 +50,9 @@ var taskArray = [];
   });//end addItemButton
 
   $('#toDoItems').on('click', '.completedTaskButton',function(){
+     $(this).parent().toggleClass('completed');
+     $(this).hide();
     var status = $(this).attr('data');
-    status.toggleClass=('completed');
     if (status === false){
       status = 'true';
     }

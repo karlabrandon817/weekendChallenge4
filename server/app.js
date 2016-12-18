@@ -51,7 +51,7 @@ app.post('/addToList', urlEncodedParser, function(req, res){
       console.log(err);
     } else {
       console.log('connected to the database');
-      client.query('INSERT INTO tasks(task, status) values ($1, $2)', [req.body.task, req.body.status]);
+      client.query('INSERT INTO tasks(task, completed) values ($1, $2)', [req.body.task, req.body.status]);
       done();
       res.send('yay!');
     }//end if else statement
@@ -64,9 +64,9 @@ app.put('/completedTasks', urlEncodedParser, function(req, res){
     if (err){
       console.log("put");
     } else {
-      var query = client.query('UPDATE tasks SET status = TRUE WHERE id = $1', [req.body.id]);
+      var query = client.query('UPDATE tasks SET completed = TRUE WHERE id = $1', [req.body.id]);
       done();
-      res.send("oscar says hi");
+      res.send("yo");
     }
   });
 });
