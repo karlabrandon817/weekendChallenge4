@@ -51,6 +51,7 @@ var taskArray = [];
 
   $('#toDoItems').on('click', '.completedTaskButton',function(){
     var status = $(this).attr('data');
+    status.toggleClass=('completed');
     if (status === false){
       status = 'true';
     }
