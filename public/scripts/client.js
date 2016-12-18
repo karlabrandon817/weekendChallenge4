@@ -68,10 +68,10 @@
     });//end completedTaskButton
 
     $('#toDoItems').on('click', '.deleteTaskButton',function(){
-      console.log('delete me clicked');
-      console.log($(this).attr('data'));
+      if(confirm("Are you sure you want to delete this item?")=== true){
       $(this).parent().hide();
       //$(this).hide();
+
       var objectToDelete = {
         id: $(this).attr('data')
       };
@@ -84,7 +84,6 @@
         console.log(response, 'delete it');
       }
       });
-
-    });//end deleteTaskButton
-
+    }
+  });//end deleteTaskButton
   });//end doc ready function

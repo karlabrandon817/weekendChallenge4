@@ -72,7 +72,6 @@ app.put('/completedTasks', urlEncodedParser, function(req, res){
 
   app.delete( '/deleteTask', urlEncodedParser, function( req, res ){
     console.log( 'deleteTask has been hit' );
-
     pg.connect(connectionString, function(err, client, done){
       if(err){
         console.log(err);
