@@ -12,7 +12,8 @@ var taskArray = [];
         var outputText = '';
         for (var i = 0; i < response.length; i++) {
           taskArray.push = (response[i]);
-          outputText += '<p>' + response[i].task + ' ' + '<button class="completedTask">Task Complete</button>' + ' ' + '<button class="deleteTask">Delete Item</button>';
+          outputText += '<p>' + response[i].task + ' ' + '<button class="completedTaskButton" data="' + response[i].id + '">Task Complete</button>' + ' ' + '<button class="deleteTaskButton">Delete Item</button>';
+
         }//end for loop
         $('#toDoItems').html(outputText);
       }
@@ -45,5 +46,10 @@ var taskArray = [];
     addTask();
   });//end addItemButton
 
+
+  $('#toDoItems').on('click', '.completedTaskButton',function(){
+    var id = $(this).attr('data');
+    console.log(id);
+  });//end completedTaskButton
 
 });//end doc ready function
