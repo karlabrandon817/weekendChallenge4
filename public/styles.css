@@ -40,18 +40,15 @@ h2 {
 }
 
 #createTask {
-  font-size: 25px;
-  text-decoration: underline;
-  color: #587498;
-  font-weight: bold;
   margin-top: -20px;
 }
 
-#incomplete{
+#createTask, #incomplete{
   font-size: 25px;
   text-decoration: underline;
   color: #587498;
   font-weight: bold;
+  font-variant: small-caps;
 }
 
 #newTaskDiv {
