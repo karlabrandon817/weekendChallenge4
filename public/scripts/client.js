@@ -8,14 +8,14 @@ var taskArray = [];
       url: '/retrieveTasks',
       success: function(response){
         console.log('back from get call:', response);
-        $('#toDoItems').html='';//clear div
+        // $('#toDoItems').html='';//clear div
         var outputText = '';
         for (var i = 0; i < response.length; i++) {
           taskArray.push = (response[i]);
-          outputText += '<p class="stuff">' + response[i].task + ' ' + '<button class="completedTaskButton" data="' + response[i].id + '">Task Complete</button>' + ' ' + '<button class="deleteTaskButton data="' + response[i].id + '"">Delete Item</button>';
+          outputText = '<p class="stuff">' + response[i].task + ' ' + '<button class="completedTaskButton" data="' + response[i].id + '">Task Complete</button>' + ' ' + '<button class="deleteTaskButton" data="' + response[i].id + '">Delete Item</button>';
 
         }//end for loop
-        $('#toDoItems').html(outputText);
+        $('#toDoItems').append(outputText);
       }
     });//end getTasks ajax
   };//end getTasks
@@ -49,6 +49,7 @@ var taskArray = [];
     addTask();
   });//end addItemButton
 
+
   $('#toDoItems').on('click', '.completedTaskButton',function(){
      $(this).parent().toggleClass('completed');
      $(this).hide();
@@ -69,4 +70,25 @@ var taskArray = [];
     }
   });
   });//end completedTaskButton
+
+  $('#toDoItems').on('click', '.deleteTaskButton',function(){
+    console.log('delete me clicked');
+    console.log($(this).attr('data'));
+    $(this).parent().hide();
+    //$(this).hide();
+    var objectToDelete = {
+      id: $(this).attr('data')
+    };
+    console.log(objectToDelete);
+    $.ajax({
+      type:'DELETE',
+      url:'/deleteTask',
+      data: objectToDelete,
+      success:function(response){
+      console.log(response, 'delete it');
+    }
+    });
+
+  });//end deleteTaskButton
+
 });//end doc ready function

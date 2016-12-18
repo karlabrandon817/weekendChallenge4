@@ -69,4 +69,21 @@ app.put('/completedTasks', urlEncodedParser, function(req, res){
       res.send("yo");
     }
   });
+
+  app.delete( '/deleteTask', urlEncodedParser, function( req, res ){
+    console.log( 'deleteTask has been hit' );
+
+    pg.connect(connectionString, function(err, client, done){
+      if(err){
+        console.log(err);
+      } else {
+        console.log('back from db');
+        client.query('DELETE FROM tasks WHERE id=$1',[req.body.id]);
+        done();
+        res.send('delete it!');
+      }// end else
+    });// end pg.connect
+  });// end post
+
+
 });
