@@ -41,15 +41,30 @@ var taskArray = [];
     });//end ajax call in addTask
   };//end addTask funciton
 
+
+
+//buttons
   $('#addTaskButton').on('click', function(){
     console.log('addItem clicked');
     addTask();
   });//end addItemButton
 
-
   $('#toDoItems').on('click', '.completedTaskButton',function(){
-    var id = $(this).attr('data');
-    console.log(id);
+    var status = $(this).attr('data');
+    if (status === false){
+      status = 'true';
+    }
+    console.log(status);
+    var objectToSend = {
+    id: $(this).attr('data')
+  };
+    $.ajax({
+      type:'PUT',
+      url:'/completedTasks',
+      data: objectToSend,
+      success:function(response){
+    console.log(response, 'yo');
+    }
+  });
   });//end completedTaskButton
-
 });//end doc ready function

@@ -57,3 +57,16 @@ app.post('/addToList', urlEncodedParser, function(req, res){
     }//end if else statement
   });//end connection to database
 });
+
+app.put('/completedTasks', urlEncodedParser, function(req, res){
+  console.log("updating...", req.body);
+  pg.connect(connectionString, function (err, client, done){
+    if (err){
+      console.log("put");
+    } else {
+      var query = client.query('UPDATE tasks SET status = TRUE WHERE id = $1', [req.body.id]);
+      done();
+      res.send("oscar says hi");
+    }
+  });
+});
