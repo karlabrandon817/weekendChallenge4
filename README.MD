@@ -22,3 +22,7 @@ Challenge Components
 [x] Whether or not a task is complete should also be stored in the database.<br>
 [x] Deleting a task should remove it both from the Front End as well as the Database.<br>
 [] Style with CSS<br>
+
+Hard Mode
+---------
+[x] Create an 'are you sure' when deleting a task
