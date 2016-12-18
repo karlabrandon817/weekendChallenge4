@@ -1,3 +1,74 @@
 .completed {
   text-decoration: line-through;
 }
+
+button {
+  border-radius: 4px  ;
+  border: .1em solid;
+  font-family: sans-serif;
+  background-color: #FFD800;
+  color: black;
+}
+
+input {
+  width: 15em;
+  height: 20px;
+  font-variant: small-caps;
+  font-size: 1em;
+}
+
+::-webkit-input-placeholder {
+  color: #1F4864;
+}
+
+#addTaskButton {
+  height: 20px;
+  font-size: 13px;
+}
+
+body{
+  font-variant: small-caps;
+  font-family: sans-serif;
+  background-color: #D7E2E9;
+  text-align: center;
+  background: url("http://images.all-free-download.com/images/graphiclarge/notepad_pencil_clip_art_23579.jpg") no-repeat;
+}
+
+h2 {
+  font-size: 70px;
+  color: #587058;
+}
+
+#createTask {
+  font-size: 25px;
+  text-decoration: underline;
+  color: #587498;
+  font-weight: bold;
+  margin-top: -20px;
+}
+
+#incomplete{
+  font-size: 25px;
+  text-decoration: underline;
+  color: #587498;
+  font-weight: bold;
+}
+
+#newTaskDiv {
+  padding-bottom: 20px;
+}
+
+p {
+  font-size: 18px;
+  font-weight: normal;
+  font-variant: normal;
+}
+
+.deleteTaskButton {
+  background-color: #E86850;
+  margin-left: 3px;
+}
+
+.completedTaskButton{
+  margin-left: 10px;
+}

@@ -21,7 +21,7 @@ Challenge Components
 [x] When a task is complete, its visual representation should change on the front end.<br>
 [x] Whether or not a task is complete should also be stored in the database.<br>
 [x] Deleting a task should remove it both from the Front End as well as the Database.<br>
-[] Style with CSS<br>
+[x] Style with CSS<br>
 
 Hard Mode
 ---------
