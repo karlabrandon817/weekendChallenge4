@@ -12,10 +12,8 @@
           var outputText = '';
           for (var i = 0; i < response.length; i++) {
             taskArray.push = (response[i]);
-            //outputText += '<p class="stuff">' + response[i].task + ' ' + '<button class="completedTaskButton" data="' + response[i].id + '">Task Complete</button>' + ' ' + '<button class="deleteTaskButton" data="' + response[i].id + '">Delete Item</button>';
             if(response[i].completed === true){
               outputText += '<p class="completed">' + response[i].task + ' ' + '<button class="deleteTaskButton" data="' + response[i].id + '">Delete Item</button>';
-              //$(this).parent().toggleClass('completed');
               $(this).hide();
             } else {
               outputText += '<p class="stuff">' + response[i].task + ' ' + '<button class="completedTaskButton" data="' + response[i].id + '">Task Complete</button>' + ' ' + '<button class="deleteTaskButton" data="' + response[i].id + '">Delete Item</button>';
