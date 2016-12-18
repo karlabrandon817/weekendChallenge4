@@ -23,6 +23,27 @@ app.get('/', function(req, res){
   res.sendFile(path.resolve('views/index.html'));
 });//end base url
 
+app.get('/retrieveTasks', function(req, res){
+  console.log('retrieveTasks url has been hit!');
+  pg.connect(connectionString, function(err, client, done){
+    if(err){
+      console.log(err);
+    }else{
+      console.log('connected to db in retrieveTasks');
+      var query = client.query('SELECT * from tasks');
+      var allTasks = [];
+      query.on('row', function(row){
+        allTasks.push(row);
+      });
+      query.on('end', function(){
+      done();
+      console.log(allTasks);
+      res.send(allTasks);
+      });
+    }
+  });//end connection to db in get
+});//end app.get retrieveTasks
+
 app.post('/addToList', urlEncodedParser, function(req, res){
   console.log('addToList req.body...',  req.body);
   pg.connect(connectionString, function(err, client, done){
@@ -30,7 +51,7 @@ app.post('/addToList', urlEncodedParser, function(req, res){
       console.log(err);
     } else {
       console.log('connected to the database');
-      client.query('INSERT INTO todolist(task, status) values ($1, $2)', [req.body.task, req.body.status]);
+      client.query('INSERT INTO tasks(task, status) values ($1, $2)', [req.body.task, req.body.status]);
       done();
       res.send('yay!');
     }//end if else statement
