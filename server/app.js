@@ -7,8 +7,7 @@ var urlEncodedParser = bodyParser.urlencoded({extended: true});
 var port = process.env.PORT || 8080;
 
 //connection string to database named "todolist"
-//table named "todolist"
-//columns in "todolist:" "id", "task" (text), "status"(boolean)
+//table named "todolist" with columns "id", "task" (text), "status"(boolean)
 var connectionString = 'postgres://localhost:5432/todolist';
 
 app.use(express.static('public')); //static folder
@@ -33,9 +32,9 @@ app.delete( '/deleteTask', urlEncodedParser, function( req, res ){
       client.query('DELETE FROM tasks WHERE id=$1',[req.body.id]);
       done();
       res.send('delete it!');
-    }// end else
+    }
   });// end pg.connect
-});// end post
+});// end app.delete /deleteTask
 
 app.get('/retrieveTasks', function(req, res){
   console.log('retrieveTasks url has been hit!');
@@ -56,7 +55,7 @@ app.get('/retrieveTasks', function(req, res){
       });
     }
   });//end connection to db in get
-});//end app.get retrieveTasks
+});//end app.get /retrieveTasks
 
 app.post('/addToList', urlEncodedParser, function(req, res){
   console.log('addToList req.body...',  req.body);
@@ -70,21 +69,17 @@ app.post('/addToList', urlEncodedParser, function(req, res){
       res.send('yay!');
     }//end if else statement
   });//end connection to database
-});
+});//end app.post /addToList
 
 app.put('/completedTasks', urlEncodedParser, function(req, res){
-  console.log("updating...", req.body);
+  console.log('updating...', req.body);
   pg.connect(connectionString, function (err, client, done){
     if (err){
-      console.log("put");
+      console.log('put');
     } else {
       var query = client.query('UPDATE tasks SET completed = TRUE WHERE id = $1', [req.body.id]);
       done();
-      res.send("yo");
+      res.send('got it');
     }
   });
-
-
-
-
-});
+});//end app.put /completedTasks

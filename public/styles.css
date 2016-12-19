@@ -1,5 +1,6 @@
 .completed {
   text-decoration: line-through;
+  color: gray;
 }
 
 button {
@@ -15,6 +16,7 @@ input {
   height: 20px;
   font-variant: small-caps;
   font-size: 1em;
+  vertical-align: middle;
 }
 
 ::-webkit-input-placeholder {
@@ -44,7 +46,7 @@ h2 {
 }
 
 #createTask, #incomplete{
-  font-size: 25px;
+  font-size: 30px;
   text-decoration: underline;
   color: #587498;
   font-weight: bold;
@@ -52,20 +54,27 @@ h2 {
 }
 
 #newTaskDiv {
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 
-p {
+.completed,.stuff {
   font-size: 18px;
-  font-weight: normal;
   font-variant: normal;
+  font-family: Helvetica;
+  margin-top: -5px;
 }
 
 .deleteTaskButton {
   background-color: #E86850;
   margin-left: 3px;
+  vertical-align: middle;
+  font-size: 12px;
+  opacity: 0.8;
 }
 
 .completedTaskButton{
   margin-left: 10px;
+  vertical-align: middle;
+  font-size: 12px;
+  opacity: 0.75;
 }
