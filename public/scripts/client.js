@@ -1,5 +1,4 @@
   $(document).ready(function(){
-  var taskArray = [];
 
   var getTasks = function(){
     console.log('in getTasks');
@@ -14,7 +13,6 @@
       var outputText = '';
 
       for (var i = 0; i < response.length; i++) {
-      taskArray.push = (response[i]);
       if(response[i].completed === true){
         outputText += '<p class="completed">' + response[i].task + ' ' + '<button class="deleteTaskButton" data="' + response[i].id + '">Delete</button>';
         $(this).hide();
