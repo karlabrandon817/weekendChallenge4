@@ -49,9 +49,9 @@ app.get('/retrieveTasks', function(req, res){
         allTasks.push(row);
       });
       query.on('end', function(){
-      done();
-      console.log(allTasks);
-      res.send(allTasks);
+        done();
+        console.log(allTasks);
+        res.send(allTasks);
       });
     }
   });//end connection to db in get
