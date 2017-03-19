@@ -21,6 +21,7 @@ input {
 
 ::-webkit-input-placeholder {
   color: #1F4864;
+  opacity: .6;
 }
 
 #addTaskButton {
